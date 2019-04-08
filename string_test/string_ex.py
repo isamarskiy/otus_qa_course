@@ -16,7 +16,6 @@ def test_sum_string(before):
     str_val_2 = ' Jack'
     assert str_val_1 + str_val_2 == 'Hi Jack'
 
-
 class TestListClass:
     def test_list_sum(self):
         # Check sum of 2 lists
