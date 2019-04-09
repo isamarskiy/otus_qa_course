@@ -1,22 +1,23 @@
-import pytest
+#import pytest
 
 
-@pytest.fixture()
-def before():
-    print('\nНачало теста')
+#@pytest.fixture()
+def before_string():
+    print('\nВыполнение теста для строки')
 
 
-def test_eval_num(before):
+def test_eval_num(before_string):
     assert (2+2)*2 == 8
 
 
-def test_sum_string(before):
+def test_sum_string(before_string):
     # Check sum of 2 strings
     str_val_1 = 'Hi'
     str_val_2 = ' Jack'
     assert str_val_1 + str_val_2 == 'Hi Jack'
 
-class TestListClass:
+
+class TestListClass(bef_list):
     def test_list_sum(self):
         # Check sum of 2 lists
         list_1 = [1, 2, 3]
@@ -48,7 +49,7 @@ def test_dict_add():
     assert dict_clubs == {}
 
 
-def test_dict_num2():
+def test_dict_num2(bef_list):
     # Создание словаря и проверка элемента с индексом 3
     test_dict = {a: a ** 2 for a in range(5)}
     assert list(test_dict.items())[3] == (3, 9)
