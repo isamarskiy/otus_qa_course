@@ -1,41 +1,55 @@
 import pytest
 
 
-@pytest.fixture(scope='function')
-def bef_str(request):
-    print('\nStart test for string')
+@pytest.fixture()
+def before(request):
+    print('\nBEF_FIX STARTED')
 
-    def aft_string():
-        print('\nTest finished')
+    def end():
+        print('\nBEF_FIX ENDED. ')
 
-    request.addfinalizer(aft_string)
+    request.addfinalizer(end)
 
 
 @pytest.fixture(scope='session')
-def bef_dict(request):
-    print('\nStart test for dict')
+def first_fix(request):
+    print('\nFIRST_FIX STARTED ')
 
-    def aft_string():
-        print('\nTest finished')
+    def end():
+        print('\nFIRST_FIX ENDED.')
 
-    request.addfinalizer(aft_string)
-
-
-@pytest.fixture(scope='module')
-def bef_list(request):
-    print('\nStart test for list')
-
-    def aft_list():
-        print('\nTest finished')
-
-    request.addfinalizer(aft_list)
+    request.addfinalizer(end)
 
 
 @pytest.fixture(scope='module')
-def sec_list_fix(request):
-    print('\nStart second fixture test for list')
+def second_fix(request):
+    print('\nSECOND_FIX STARTED')
 
-    def aft_sec_fix():
-        print('\nTest finished')
+    def end():
+        print('\nSECOND_FIX ENDED.')
 
-    request.addfinalizer(aft_sec_fix)
+    request.addfinalizer(end)
+
+
+@pytest.fixture(scope='module')
+def third_fix(request):
+    print('\nTHIRD_FIX STARTED')
+
+    def end():
+        print('\nTHIRD_FIX ENDED.')
+
+    request.addfinalizer(end)
+
+
+@pytest.fixture()
+def request_fix(request):
+    print('\n-----------------')
+    print('fixturename : %s' % request.fixturename)
+    print('scope       : %s' % request.scope)
+    print('function    : %s' % request.function.__name__)
+    print('cls         : %s' % request.cls)
+    print('module      : %s' % request.module.__name__)
+    print('fspath      : %s' % request.fspath)
+    print('-----------------')
+
+    assert True
