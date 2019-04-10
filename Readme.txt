@@ -1,1 +1,1 @@
-Проект обучения в OTUS
+"QA automation OTUS course"
