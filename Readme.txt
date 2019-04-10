@@ -1,2 +1,1 @@
-New Test_file
-new string
+Проект обучения в OTUS
