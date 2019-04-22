@@ -10,7 +10,6 @@ class API:
         url = "/".join((self.address, endpoint))
         return requests.get(url)
 
-
 @pytest.fixture
 def dog():
     client = API('https://dog.ceo/api')
@@ -27,4 +26,3 @@ def brew():
 def cdnjs():
     client = API('https://api.cdnjs.com')
     return client
-
