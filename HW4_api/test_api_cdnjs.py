@@ -1,5 +1,22 @@
 """ API tests for https://cdnjs.com/api"""
 import pytest
+import requests
+
+
+class API:
+    def __init__(self, address):
+        self.address = address
+
+    def get(self, endpoint):
+        url = "/".join((self.address, endpoint))
+        return requests.get(url)
+
+
+@pytest.fixture()
+def cdnjs():
+    client = API('https://api.cdnjs.com')
+    return client
+
 
 ENDPOINTS = ['libraries',
              'libraries?output=human',
