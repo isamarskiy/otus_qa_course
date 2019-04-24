@@ -1,20 +1,29 @@
-import pytest
+""" Запуск теста """
 
-fix_names = ['dog', 'brew', 'cdnjs', 'all']
+import pytest
 
 
 def test_start(additional_value):
-    for value in fix_names:
-        if value == 'dog':
-            test = ['test_api_dog.py']
-        elif value == 'brew':
-            test = ['test_api_breweries.py']
-        elif value == 'cdnjs':
-            test = ['test_api_cdnjs.py']
-        elif value == 'all':
-            test = ['test_api_dog.py', 'test_api_breweries.py', 'test_api_cdnjs.py']
-        else:
-            print("Неверное название")
-            return
+    if additional_value == 'dog':
+        test = [
+            'test_api_dog.py'
+        ]
+    elif additional_value == 'brew':
+        test = [
+            'test_api_breweries.py'
+        ]
+    elif additional_value == 'cdnjs':
+        test = [
+            'test_api_cdnjs.py'
+        ]
+    elif additional_value == 'all':
+        test = [
+            'test_api_dog.py',
+            'test_api_breweries.py',
+            'test_api_cdnjs.py'
+        ]
+    else:
+        print("Неверное название")
 
     pytest.main(test)
+

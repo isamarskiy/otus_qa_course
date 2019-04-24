@@ -1,23 +1,6 @@
 """ API tests for https://dog.ceo/dog-api/"""
 
 import pytest
-import requests
-
-
-class API:
-    def __init__(self, address):
-        self.address = address
-
-    def get(self, endpoint):
-        url = "/".join((self.address, endpoint))
-        return requests.get(url)
-
-
-@pytest.fixture
-def dog():
-    client = API('https://dog.ceo/api')
-    return client
-
 
 ENDPOINTS = ['breeds/list/all',
              'breed/akita/images/random',
