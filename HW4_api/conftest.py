@@ -14,7 +14,8 @@ class API:
 
 def pytest_addoption(parser):
     parser.addoption(
-        '--additional_value', action='store', default='all'
+        '--additional_value', action='store', default='all',
+        help='Для запуска одного теста: dog, brew, cdnjs. Без аргумента запускаются все тесты'
     )
 
 

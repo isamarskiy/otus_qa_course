@@ -24,7 +24,8 @@ def test_start(additional_value):
             'test_api_cdnjs.py'
         ]
     else:
-        pytest.xfail("Неверное название")
+        print('Введено некорректное значение')
+        pytest.xfail('Некорректное значение')
         return
     pytest.main(test)
 
