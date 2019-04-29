@@ -6,7 +6,7 @@ from selenium.webdriver import IeOptions
 
 
 def pytest_addoption(parser):
-    parser.addoption("--url", action="store", default="http://192.168.11.205/")
+    parser.addoption("--url", action="store", default="http://localhost/opencart")
     parser.addoption("--browser", action="store", default="chrome")
 
 
@@ -14,6 +14,7 @@ def pytest_addoption(parser):
 def driver(request):
     browser = request.config.getoption('--browser')
     if browser == 'chrome':
+        print('\n Chrome browser')
         options = ChromeOptions()
         options.add_argument('--start-fullscreen')
         options.add_argument('--headless')
@@ -21,6 +22,7 @@ def driver(request):
         request.addfinalizer(wd.quit)
         return wd
     elif browser == 'firefox':
+        print('\n FF browser')
         options = FirefoxOptions()
         options.add_argument('--start-fullscreen')
         options.add_argument('--headless')
@@ -28,10 +30,11 @@ def driver(request):
         request.addfinalizer(wd.quit)
         return wd
     else:
+        print('\n IE browser')
         options = IeOptions()
-        options.add_argument('--start-fullscreen')
-        # options.add_argument('--headless')
+        # options.add_argument('headless_ie_selenium')
         wd = webdriver.Ie(options=options)
+        wd.fullscreen_window()
         request.addfinalizer(wd.quit)
         return wd
 
