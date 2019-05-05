@@ -22,6 +22,7 @@ def pytest_addoption(parser):
 @pytest.fixture(scope="session")
 def additional_value(request):
     return request.config.getoption("--additional_value")
+    parser.addoption('--all', action='store', help='run all tests')
 
 
 @pytest.fixture
@@ -35,9 +36,10 @@ def cdnjs():
     client = API('https://api.cdnjs.com')
     return client
 
-
 @pytest.fixture()
 def brew():
-    client = API('https://api.openbrewerydb.org')
+    client = API('https://dog.ceo/api')
     return client
+
+
 

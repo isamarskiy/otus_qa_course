@@ -17,14 +17,14 @@ def driver(request):
         print('\n Chrome browser')
         options = webdriver.ChromeOptions()
         options.add_argument('--start-maximized')
-        #options.add_argument('--headless')
+        options.add_argument('--headless')
         wd = webdriver.Chrome(options=options)
         return wd
     elif browser == 'firefox':
         print('\n FF browser')
         options = FirefoxOptions()
         options.add_argument('--start-maximized')
-        # options.add_argument('--headless')
+        options.add_argument('--headless')
         wd = webdriver.Firefox(options=options)
         wd.maximize_window()
         return wd
