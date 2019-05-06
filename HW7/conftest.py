@@ -15,7 +15,7 @@ def driver(request):
     browser = request.config.getoption('--browser')
     if browser == 'chrome':
         print('\n Chrome browser')
-        options = webdriver.ChromeOptions()
+        options = ChromeOptions()
         options.add_argument('--start-maximized')
         options.add_argument('--headless')
         wd = webdriver.Chrome(options=options)
