@@ -17,8 +17,9 @@ def driver(request):
         print('\n Chrome browser')
         options = ChromeOptions()
         options.add_argument('--start-maximized')
-        options.add_argument('--headless')
+        #options.add_argument('--headless')
         wd = webdriver.Chrome(options=options)
+        request.addfinalizer(wd.quit)
         return wd
     elif browser == 'firefox':
         print('\n FF browser')
@@ -27,6 +28,7 @@ def driver(request):
         options.add_argument('--headless')
         wd = webdriver.Firefox(options=options)
         wd.maximize_window()
+        request.addfinalizer(wd.quit)
         return wd
     else:
         print('\n IE browser')
