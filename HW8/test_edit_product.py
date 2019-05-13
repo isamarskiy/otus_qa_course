@@ -22,4 +22,3 @@ def test_edit_product(driver):
     new_product = driver.find_element_by_xpath("//td[contains(text(),'aaTest product1')]").is_enabled()
     assert new_product
     assert notification
-

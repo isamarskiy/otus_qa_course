@@ -1,7 +1,6 @@
 """
 Проверка добавления продукта
 """
-import time
 
 
 def test_add_product(driver):
@@ -18,7 +17,6 @@ def test_add_product(driver):
     driver.find_element_by_partial_link_text('Data').click()
     driver.find_element_by_name('model').send_keys('Test model')
     driver.find_element_by_xpath("//button[@data-original-title='Save']").click()
-    # поменять на класс
     notification = driver.find_element_by_xpath("//div[contains(text(), 'Success: You have modified products')]")
     new_product = driver.find_element_by_xpath("//td[contains(text(),'aaTest product')]").is_enabled()
     assert new_product

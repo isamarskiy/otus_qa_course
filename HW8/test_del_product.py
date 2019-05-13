@@ -4,11 +4,11 @@
 import time
 
 
-def test_add_product(driver):
+def test_del_product(driver):
     driver.get('http://localhost/admin')
     # http://localhost/admin http://localhost/opencart/admin
-    driver.find_element_by_id('input-username').send_keys('admin')
-    driver.find_element_by_id('input-password').send_keys('admin')
+    driver.find_element_by_xpath("//*[@placeholder='Username']").send_keys('admin')
+    driver.find_element_by_xpath("//*[@placeholder='Password']").send_keys('admin')
     driver.find_element_by_css_selector('.btn.btn-primary').click()
     driver.find_element_by_xpath("//a[contains(text(),'Catalog')]").click()
     time.sleep(1)
