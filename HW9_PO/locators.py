@@ -5,7 +5,7 @@ class LoginPageLocators:
     USERNAME = (By.ID, "input-username")
     PASSWORD = (By.ID, "input-password")
     EMAIL = (By.NAME, "email")
-    BUTTON = (By.XPATH, "//button[@type='submit']")
+    SUBMIT_BUTTON = (By.XPATH, "//button[@type='submit']")
     FORGET_PASS = (By.LINK_TEXT, "Forgotten Password")
     BUTTON_RESET = (By.XPATH, "//*[contains(text(),'Reset')]")
     ALERT_FAILURE = (By.XPATH, "//*[contains(text(), 'No match for Username and/or Password')]")
@@ -17,7 +17,7 @@ class DashboardLocators:
 
 
 class ProductPageLocators:
-    CREATE_BUTTON = (By.XPATH, "//a[@data-original-title='Add New")
+    ADD_BUTTON = (By.XPATH, "//a[@data-original-title='Add New")
     DELETE_BUTTON = (By.XPATH, "//button[@data-original-title='Delete']")
     EDIT_BUTTON = (By.XPATH, "//td[contains(text(), 'Product_name')]/parent::*//a")
     SUCCESS_ALERT = (By.XPATH, "//div[contains(text(), 'Success: You have modified products')]")
