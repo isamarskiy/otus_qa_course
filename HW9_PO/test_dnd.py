@@ -19,3 +19,4 @@ def test_dnd(driver):
     action.drag_and_drop(source1, source2).perform()
     assert source2.location['y'] < source1.location['y']
 
+
