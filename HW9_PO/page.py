@@ -2,7 +2,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from HW9_PO.locators import LoginPageLocators, DashboardLocators, EditProductPageLocators, ProductPageLocators
 
-
 class BasePage:
 
     def __init__(self, driver):
@@ -89,6 +88,10 @@ class ProductEditPage(ProductPageButtons):
         """Выбрать вкладку"""
         return self.driver.find_element(*EditProductPageLocators.TAB_DATA).click()
 
+    def select_tab_image(self):
+        """Выбрать вкладку Image"""
+        return self.driver.find_element(*EditProductPageLocators.TAB_IMAGE).click()
+
     def set_model_name(self, model_name):
         """Заполнение модели"""
         return self.driver.find_element(*EditProductPageLocators.MODEL_DATA).send_keys(model_name)
@@ -100,6 +103,16 @@ class ProductEditPage(ProductPageButtons):
     def clear_name(self):
         """Удаление имени"""
         return self.driver.find_element(*EditProductPageLocators.PRODUCT_NAME).clear()
+
+    def add_im_button(self):
+        """Нажатие кнопки добавить изображение"""
+        return self.driver.find_element(*EditProductPageLocators.ADD_IMG_BUTTON).click()
+
+    def click_on_image(self):
+        return self.driver.find_element(*EditProductPageLocators.TABLE_IMAGES_ELEMENT).click()
+
+    def click_on_edit_im(self):
+        return self.driver.find_element(*EditProductPageLocators.BUTTON_EDIT_IMAGE).click()
 
     def add_product(self, product_name, tag_title, model_name):
         """Добавление нового продукта"""

@@ -29,7 +29,11 @@ class EditProductPageLocators:
     PRODUCT_NAME = (By.NAME, "product_description[1][name]")
     META_TAG_TITLE = (By.NAME, "product_description[1][meta_title]")
     TAB_DATA = (By.LINK_TEXT, "Data")
-    MODEL_DATA = (By.NAME, "model")  # {model_name}
+    TAB_IMAGE = (By.LINK_TEXT, "Image")
+    MODEL_DATA = (By.NAME, "model")
     SAVE_BUTTON = (By.XPATH, "//button[@data-original-title='Save']")
+    ADD_IMG_BUTTON = (By.XPATH, "//button[@data-original-title='Add Image']")
     EDIT_PRODUCT_BY_NAME = (By.XPATH, "//td[contains(text(), 'aaaTest_product')]/parent::*//a")
     # {product_name}
+    TABLE_IMAGES_ELEMENT = (By.XPATH, "(//div[@class= 'table-responsive']//table[@id= 'images']//*//img)[last()]")
+    BUTTON_EDIT_IMAGE = (By.ID, "button-image")
