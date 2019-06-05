@@ -18,6 +18,8 @@ def driver(request):
         print('\n Chrome browser')
         capabilities = webdriver.DesiredCapabilities.CHROME.copy()
         capabilities['timeouts'] = {'implicit': int((request.config.getoption('--wait'))), 'pageLoad': 5000}
+        capabilities['acceptSslCerts'] = True
+        capabilities['acceptInsecureCerts'] = True
         options = ChromeOptions()
         options.add_argument('--start-maximized')
         options.add_argument('--headless')

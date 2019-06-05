@@ -37,3 +37,13 @@ class EditProductPageLocators:
     # {product_name}
     TABLE_IMAGES_ELEMENT = (By.XPATH, "(//div[@class= 'table-responsive']//table[@id= 'images']//*//img)[last()]")
     BUTTON_EDIT_IMAGE = (By.ID, "button-image")
+
+
+class DownloadPageLocators:
+    FILE_NAME = (By.NAME, "download_description[1][name]")
+    MASK_NAME = (By.NAME, "mask")
+    INPUT_FIELD = (By.CSS_SELECTOR, "input[name='file']")
+    SAVE_BUTTON = (By.XPATH, "//button[@data-original-title= 'Save']")
+
+
+

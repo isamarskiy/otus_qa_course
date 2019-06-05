@@ -1,6 +1,10 @@
+import os
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-from HW9_PO.locators import LoginPageLocators, DashboardLocators, EditProductPageLocators, ProductPageLocators
+from urllib.parse import urlparse, parse_qs
+from HW9_PO.locators import LoginPageLocators, DashboardLocators, EditProductPageLocators, ProductPageLocators, \
+    DownloadPageLocators
+
 
 class BasePage:
 
@@ -131,6 +135,54 @@ class ProductEditPage(ProductPageButtons):
         self.set_name_product(new_product_name)
         self.save_button()
         assert self.driver.find_element(*ProductPageLocators.SUCCESS_ALERT)
+
+
+class DownloadPage(BasePage):
+
+    def upload_file(self, user_token, filename, name, mask):
+        """Процесс описания загрузки файла"""
+        self.driver.find_element(*DownloadPageLocators.FILE_NAME).send_keys(name)
+        self.driver.find_element(*DownloadPageLocators.MASK_NAME).send_keys(mask)
+        create_form = "$('body').prepend('<form enctype=\"multipart/form-data\" " \
+                      "id=\"form-upload\" style=\"display: none;\"><input type=\"file\" name=\"file\" /></form>');"
+        self.driver.execute_script(create_form)
+        self.driver.find_element(*DownloadPageLocators.INPUT_FIELD).send_keys(filename)
+        upload_js = ("$.ajax({"  # скрипт загрузки файла
+                     "url: 'index.php?route=catalog/download/upload&user_token=") + user_token + ("',"
+                     "type: 'post',"
+                     "dataType: 'json',"
+                     "data: new FormData($('#form-upload')[0]),"
+                     "cache: false,"
+                     "contentType: false,"
+                     "processData: false,"
+                     "beforeSend: function() {"
+                     "  $('#button-upload').button('loading');"
+                     "},"
+                     "complete: function() {"
+                     "  $('#button-upload').button('reset');"
+                     "},"
+                     "success: function(json) {"
+                     "  if (json['error']) {"
+                     "    alert(json['error']);"
+                     "  }"
+                     "  if (json['success']) {"
+                     "    alert(json['success']);"
+                     "    $('input[name=\\'filename\\']').val(json['filename']);"
+                     "    $('input[name=\\'mask\\']').val(json['mask']);"
+                     "  }"
+                     "},"
+                     "error: function(xhr, ajaxOptions, thrownError) {"
+                     "  alert(thrownError + \"\\r\\n\" + xhr.statusText + \"\\r\\n\" + xhr.responseText);"
+                     "}"
+                     "});")
+        self.driver.execute_script(upload_js)
+
+    def click_save_button(self):
+        return self.driver.find_element(*DownloadPageLocators.SAVE_BUTTON).click()
+
+    def new_row_in_table(self, name):
+        return self.driver.find_element_by_xpath("//table//tbody/*/td[contains(text(), '%s')]" % name)
+
 
 
 
