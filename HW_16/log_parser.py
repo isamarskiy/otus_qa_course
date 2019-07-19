@@ -27,20 +27,20 @@ class Log:
         """Вычисление всех запросов"""
         regexp = r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
         ips_list = re.findall(regexp, self.log_file)
-        self.set_value("Запросов всего", len(ips_list))
+        self.set_value("All requests", len(ips_list))
 
     def requests_type(self):
         """Типы запросов"""
         regexp = r"GET|POST|PUT|DELETE"
         requests = re.findall(regexp, self.log_file)
-        self.set_value("Запросы по типам", dict(Counter(requests)))
+        self.set_value("Requests type", dict(Counter(requests)))
 
     def top_ip(self):
         """Топ 10 ip-адрессов"""
         regexp = r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
         ip_list = re.findall(regexp, self.log_file)
         sorted_ip = map(lambda x: x[0], sorted(Counter(ip_list).items())[:10])
-        self.set_value("Топ 10 ip-адрессов", list(sorted_ip))
+        self.set_value("Top 10 of IP", list(sorted_ip))
 
     def longest_requests(self):
         """Топ 10 долгих запросов"""
@@ -48,7 +48,7 @@ class Log:
         longest_logs = re.findall(regexp, self.log_file)
         longest_logs_info = list(map(lambda x: (x[2], x[0], x[5]), longest_logs))
         sorted_list = sorted(Counter(longest_logs_info).items())[:10]
-        self.set_value("Топ 10 долгих запросов", list(map(lambda x: x[0], sorted_list)))
+        self.set_value("Top 10 of long requests", list(map(lambda x: x[0], sorted_list)))
 
     def client_errors(self):
         """Топ 10 клиентских ошибок"""
@@ -56,7 +56,7 @@ class Log:
         client_error_logs = re.findall(regexp, self.log_file)
         client_error_logs_info = list(map(lambda x: (x[0], x[2], x[4]), client_error_logs))
         sorted_list = sorted(Counter(client_error_logs_info).items())[:10]
-        self.set_value("Топ 10 клиентских ошибок", list(map(lambda x: x[0], sorted_list)))
+        self.set_value("Top 10 of client errors", list(map(lambda x: x[0], sorted_list)))
 
     def server_errors(self):
         """Топ 10 серверных ошибок"""
@@ -64,7 +64,7 @@ class Log:
         client_error_logs = re.findall(regexp, self.log_file)
         client_error_logs_info = list(map(lambda x: (x[0], x[2], x[4]), client_error_logs))
         sorted_list = sorted(Counter(client_error_logs_info).items())[:10]
-        self.set_value("Топ 10 серверных ошибок", list(map(lambda x: x[0], sorted_list)))
+        self.set_value("Top 10 of server errors", list(map(lambda x: x[0], sorted_list)))
 
     def save_to_json(self):
         """Сохранение в json"""
