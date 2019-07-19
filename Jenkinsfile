@@ -1,6 +1,6 @@
 pipeline{
     agent {
-        docker { image 'eeacms/pep8'}
+        docker { image 'eeacms/pylint'}
     }
     stages{
         stage('Code pull'){
@@ -8,9 +8,9 @@ pipeline{
             checkout scm
             }
         }
-        stage('Run peep8'){
+        stage('Run pylint'){
             steps{
-                sh 'pep8 *'
+                sh 'pylint *'
             }
         }
     }
