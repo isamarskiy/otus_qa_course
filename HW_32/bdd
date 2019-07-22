@@ -1,0 +1,38 @@
+History: Buy items in online-store
+
+As a online-store owner
+I want to add item in shopping cart, remove item from cart, change quantity of items in cart, add in wish list
+
+Scenario 1: Buy item from Featured
+Given Open main page of online-store
+And have "Featured" on page
+When owner click on button "Add to cart"
+Then item has added in cart
+
+Scenario 2: Remove item from shopping cart
+Given Owner previously added item in shopping cart
+When owner go to shopping cart page
+And click Remove on shopping cart page
+Then item remove from shopping cart
+
+Scenario 3: Change quantity of item in cart
+Given Owner previously added item in shopping cart
+When owner go to shopping cart page
+And change quantity of item
+And click Update
+Then quantity of item has changed
+
+Scenario 4: Add to Wish List
+Given Open main page of online-store
+And have items on page
+When owner click on button "Add to Wish List"
+Then item has added in Wish list
+
+Scenario 5: Product comparison
+Given Open main page of online-store
+And have items on page
+When owner click on "Compare this Product" button for first item
+And owner click on "Compare this Product" button for second item
+Then items has added on "Product Comparison" page
+
+
