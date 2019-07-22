@@ -37,4 +37,4 @@ AssertFailtNotification
     Get WebElement  xpath://*[contains(text(), 'No match for Username and/or Password')]
 
 AssertSuccessNotification
-    Get WebElement  xpath://*[contains(text(), 'Warning: Please check the form carefully for errors!')]
+    Get WebElement  xpath://*[contains(text(), 'Success: You have modified products!')]
