@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-
 setup(
     name="first_project",
     version="0.1",
@@ -8,5 +7,5 @@ setup(
     author_email="samarskyii@gmail.com",
     description="HW otus-qa-course",
     packages=find_packages(exclude=['otus-qa-course']),
-    install_requires=['pytest>=3.7.1']
+    install_requires=['pytest>=4.6.4']
 )
