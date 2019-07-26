@@ -1,0 +1,15 @@
+Запуск python test_python_linux.py [команда]
+Команды:
+    i                   Verify IP address
+    r                   Show default route
+    test_proc_info      Show process state
+    pi                  Show process info
+    ps                  Show all processes
+    nt                  Show net stats
+    sst                 Show service status
+    tcp                 Show tcp state
+    pkv                 Show pkg version
+    d                   Show list of files in directory
+    p                   Show current directory
+    cv                  Show core version
+    osv                 Show OS version
