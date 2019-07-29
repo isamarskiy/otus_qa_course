@@ -21,6 +21,8 @@ def driver(request):
         options = ChromeOptions()
         options.add_argument('--start-maximized')
         options.add_argument('--headless')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-setuid-sandbox')
         wd = webdriver.Chrome(options=options, desired_capabilities=capabilities)
         request.addfinalizer(wd.quit)
         return wd
