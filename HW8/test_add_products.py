@@ -28,7 +28,8 @@ def test_add_product(driver):
         assert new_product
         assert notification
     except (NoSuchElementException, ElementNotVisibleException):
-        return print
+        return
+
 
 
 

@@ -22,5 +22,4 @@ def test_del_product(driver):
         assert notification
     except (NoSuchElementException, ElementNotVisibleException):
         return
-        print("test")
 

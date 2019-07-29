@@ -26,3 +26,4 @@ def test_edit_product(driver):
         assert notification
     except (NoSuchElementException, ElementNotVisibleException):
         return
+
