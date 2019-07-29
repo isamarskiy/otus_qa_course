@@ -1,5 +1,4 @@
 """
-Проверка добавления продукта
 
 """
 from selenium.webdriver.support.ui import WebDriverWait
@@ -29,7 +28,7 @@ def test_add_product(driver):
         assert new_product
         assert notification
     except (NoSuchElementException, ElementNotVisibleException):
-        return print("Элемент отсутствует или не найден")
+        return print
 
 
 

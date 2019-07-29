@@ -1,7 +1,3 @@
-"""
-Проверка редактирования продукта
-
-"""
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
@@ -10,7 +6,7 @@ from selenium.common.exceptions import NoSuchElementException, ElementNotVisible
 
 
 def test_edit_product(driver):
-    driver.get('http:///127.0.0.1/admin')
+    driver.get('http://127.0.0.1/admin')
     # http://localhost/admin http://localhost/opencart/admin
     try:
         driver.find_element_by_xpath("//*[contains(@name, 'username')]").send_keys('admin')
@@ -30,4 +26,3 @@ def test_edit_product(driver):
         assert notification
     except (NoSuchElementException, ElementNotVisibleException):
         return
-        print("Элемент отсутствует или не найден")

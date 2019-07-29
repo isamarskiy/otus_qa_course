@@ -1,8 +1,3 @@
-"""
-Проверка удаления продукта
-
-"""
-
 from selenium.common.exceptions import NoSuchElementException, ElementNotVisibleException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
@@ -27,5 +22,5 @@ def test_del_product(driver):
         assert notification
     except (NoSuchElementException, ElementNotVisibleException):
         return
-        print("Элемент отсутствует или не найден")
+        print("test")
 
