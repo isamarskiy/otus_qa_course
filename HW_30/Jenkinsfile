@@ -1,0 +1,30 @@
+pipeline{
+    agent {
+        docker { image 'isamarskiy/otus-qa'}
+    }
+    stages{
+        stage('Pytest') {
+            steps {
+                sh "pytest /otus_qa_course/HW8/*"
+            	}
+        	}
+        stage('save pipeline log') {
+            steps {
+                script {
+                def logContent = Jenkins.getInstance()
+                    .getItemByFullName(env.JOB_NAME)
+                    .getBuildByNumber(
+                    Integer.parseInt(env.BUILD_NUMBER))
+                .logFile.text
+                // copy the log in the job's own workspace
+                writeFile file: "Pipelinelog.txt", text: logContent
+                    }
+                }
+        }
+    }
+    post{
+        always {
+            archiveArtifacts artifacts: 'Pipelinelog.txt'
+        }
+    }
+}
